@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 
 import { getCurrent } from "@/features/auth/queries";
 import { getWorkspaces } from "@/features/workspaces/queries";
+import { CreateWorkspaceForm } from "@/features/workspaces/components/create-workspace-form";
 
 export default async function Home() {
   const user = await getCurrent();
@@ -13,7 +14,11 @@ export default async function Home() {
   const workspaces = await getWorkspaces();
 
   if (workspaces.total === 0) {
-    redirect("/workspaces/create");
+    return (
+      <div className="w-full lg:max-w-xl">
+        <CreateWorkspaceForm />
+      </div>
+    );
   } else {
     redirect(`/workspaces/${workspaces.documents[0].$id}`);
   }
