@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
   (await cookies()).set(AUTH_COOKIE, session.secret, {
     path: "/",
     httpOnly: true,
-    sameSite: "none",
+    sameSite: "strict",
     secure: true,
   });
 
