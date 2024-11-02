@@ -5,11 +5,15 @@ import { getWorkspaces } from "@/features/workspaces/queries";
 
 export default async function Home() {
   const user = await getCurrent();
+
+  console.log("user", user);
+
   if (!user) {
     redirect("/sign-in");
   }
 
   const workspaces = await getWorkspaces();
+
   if (workspaces.total === 0) {
     redirect("/workspaces/create");
   } else {
