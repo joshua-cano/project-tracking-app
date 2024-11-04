@@ -1,9 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import logo from "../../../public/logo.svg";
+import { Icons } from "@/components/icons";
 
 import { Button } from "@/components/ui/button";
 
@@ -16,11 +15,14 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
   const isSignIn = pathname === "/sign-in";
 
   return (
-    <main className="bg-neutral-100 min-h-screen">
+    <main className="bg-background min-h-screen">
       <div className="mx-auto max-w-screen-2xl p-4">
         <nav className="flex justify-between items-center h-[73px]">
-          <Link href="/">
-            <Image src={logo} alt="logo" />
+          <Link href="/" className="flex items-center gap-1">
+            <Icons.logo />
+            <span className="text-2xl font-semibold leading-none">
+              TaskFlow
+            </span>
           </Link>
           <Button variant="secondary" asChild>
             <Link href={isSignIn ? "/sign-up" : "/sign-in"}>

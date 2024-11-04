@@ -12,15 +12,15 @@ export const ProjectIdSettingsClient = () => {
   const { data: initialValues, isLoading } = useGetProject({ projectId });
 
   if (isLoading) {
-    return <PageLoader />
+    return <PageLoader />;
   }
 
   if (!initialValues) {
-    return <PageError message="Project not found" />
+    return <PageError message="Project not found" />;
   }
 
   return (
-    <div className="w-full lg:max-w-xl">
+    <div className="w-full lg:max-w-xl mx-auto">
       <EditProjectForm initialValues={initialValues} />
     </div>
   );

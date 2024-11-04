@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ThemeProvider } from "@/components/theme-provider";
 import { Inter } from "next/font/google";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 
@@ -21,12 +22,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={cn(inter.className, "antialiased min-h-screen")}>
-        <QueryProvider>
-          <Toaster />
-          <NuqsAdapter>{children}</NuqsAdapter>
-        </QueryProvider>
+        <ThemeProvider>
+          <QueryProvider>
+            <Toaster />
+            <NuqsAdapter>{children}</NuqsAdapter>
+          </QueryProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
