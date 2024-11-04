@@ -103,7 +103,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 
   const avatarFallback = user?.name
     ? user?.name.charAt(0).toUpperCase()
-    : user?.email.charAt(0).toUpperCase() ?? "U";
+    : user?.email.charAt(0).toUpperCase();
 
   const [activeWorkspaceId, setActiveWorkspaceId] = React.useState("");
 
@@ -142,7 +142,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                   <span className="text-sm">Workspaces</span>
                   <RiAddCircleFill
                     onClick={openWorkspaceModal}
-                    className="cursor-pointer hover:opacity-75 transition w-full"
+                    className="cursor-pointer hover:opacity-75 transition fill-foreground"
                   />
                 </SidebarGroupLabel>
                 <SidebarMenu>
@@ -219,11 +219,11 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                 </SidebarMenu>
               </SidebarGroup>
               <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-                <SidebarGroupLabel className="justify-between [&>svg]:size-5">
+                <SidebarGroupLabel className="justify-between [&>svg]:size-5 items-center">
                   <span className="text-sm">Projects</span>
                   <RiAddCircleFill
                     onClick={openProjectModal}
-                    className="cursor-pointer hover:opacity-75 transition w-full"
+                    className="cursor-pointer hover:opacity-75 transition w-full fill-foreground"
                   />
                 </SidebarGroupLabel>
                 <Projects />
@@ -281,7 +281,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                     <DottedSeparator className="my-2" />
                     <DropdownMenuItem
                       onClick={() => logout()}
-                      className="text-amber-700 font-medium cursor-pointer"
+                      className="font-medium cursor-pointer"
                     >
                       <LogOut />
                       Log out

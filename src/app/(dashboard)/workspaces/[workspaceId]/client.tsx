@@ -80,11 +80,11 @@ export const TaskList = ({ data, total }: TaskListProps) => {
 
   return (
     <div className="flex flex-col gap-y-4 col-span-1">
-      <div className="bg-muted rounded-lg p-4">
+      <div className="border rounded-lg p-4">
         <div className="flex items-center justify-between">
           <p className="text-lg font-semibold">Tasks ({total})</p>
-          <Button variant="muted" size="icon" onClick={createTask}>
-            <PlusIcon className="size-4 text-neutral-400" />
+          <Button variant="secondary" size="icon" onClick={createTask}>
+            <PlusIcon className="size-4" />
           </Button>
         </div>
         <DottedSeparator className="my-4" />
@@ -114,7 +114,7 @@ export const TaskList = ({ data, total }: TaskListProps) => {
             No tasks found
           </li>
         </ul>
-        <Button variant="muted" className="mt-4 w-full" asChild>
+        <Button variant="outline" className="mt-4 w-full" asChild>
           <Link href={`/workspaces/${workspaceId}/tasks`}>Show All</Link>
         </Button>
       </div>
@@ -132,11 +132,11 @@ export const ProjectList = ({ data, total }: ProjectListProps) => {
 
   return (
     <div className="flex flex-col gap-y-4 col-span-1">
-      <div className="bg-background border rounded-lg p-4">
+      <div className="border rounded-lg p-4">
         <div className="flex items-center justify-between">
           <p className="text-lg font-semibold">Projects ({total})</p>
           <Button variant="secondary" size="icon" onClick={createProject}>
-            <PlusIcon className="size-4 text-neutral-400" />
+            <PlusIcon className="size-4" />
           </Button>
         </div>
         <DottedSeparator className="my-4" />
@@ -178,12 +178,12 @@ export const MembersList = ({ data, total }: MembersListProps) => {
 
   return (
     <div className="flex flex-col gap-y-4 col-span-1">
-      <div className="bg-background border rounded-lg p-4">
+      <div className="border rounded-lg p-4">
         <div className="flex items-center justify-between">
           <p className="text-lg font-semibold">Members ({total})</p>
           <Button asChild variant="secondary" size="icon">
             <Link href={`/workspaces/${workspaceId}/members`}>
-              <SettingsIcon className="size-4 text-neutral-400" />
+              <SettingsIcon className="size-4 " />
             </Link>
           </Button>
         </div>

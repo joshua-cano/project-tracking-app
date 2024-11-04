@@ -126,7 +126,7 @@ export const CreateProjectForm = ({ onCancel }: CreateProjectFormProps) => {
                       ) : (
                         <Avatar className="size-[72px]">
                           <AvatarFallback>
-                            <ImageIcon className="size-[36px] text-neutral-400" />
+                            <ImageIcon className="size-[36px] text-secondary" />
                           </AvatarFallback>
                         </Avatar>
                       )}
@@ -158,7 +158,6 @@ export const CreateProjectForm = ({ onCancel }: CreateProjectFormProps) => {
                           <Button
                             type="button"
                             disabled={isPending}
-                            variant="tertiary"
                             size="xs"
                             className="w-fit mt-2"
                             onClick={() => inputRef.current?.click()}

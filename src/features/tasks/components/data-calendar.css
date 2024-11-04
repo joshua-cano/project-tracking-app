@@ -39,7 +39,7 @@
 }
 
 .rbc-today {
-  @apply bg-sky-300/20;
+  @apply bg-muted;
 }
 
 .rbc-off-range-bg {

@@ -78,13 +78,11 @@ export const CreateTaskForm = ({
 
   return (
     <Card className="size-full border-none shadow-none">
-      <CardHeader className="flex p-7">
+      <CardHeader className="flex">
         <CardTitle className="text-xl font-bold">Create new task</CardTitle>
       </CardHeader>
-      <div className="px-7">
-        <DottedSeparator />
-      </div>
-      <CardContent className="p-7">
+
+      <CardContent className="">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-y-2">
@@ -219,8 +217,7 @@ export const CreateTaskForm = ({
                 )}
               />
             </div>
-            <DottedSeparator className="py-2" />
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between mt-7">
               <Button
                 type="button"
                 size="sm"
