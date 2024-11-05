@@ -8,6 +8,8 @@ import { QueryProvider } from "@/components/query-provider";
 import { Toaster } from "@/components/ui/sonner";
 
 import "./globals.css";
+import { Suspense } from "react";
+import { PageLoader } from "@/components/page-loader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,7 +29,9 @@ export default function RootLayout({
         <ThemeProvider>
           <QueryProvider>
             <Toaster />
-            <NuqsAdapter>{children}</NuqsAdapter>
+            <Suspense fallback={<PageLoader />}>
+              <NuqsAdapter>{children}</NuqsAdapter>
+            </Suspense>
           </QueryProvider>
         </ThemeProvider>
       </body>

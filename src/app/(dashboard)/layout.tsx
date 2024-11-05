@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense } from "react";
+import React from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -58,7 +58,6 @@ import { useCurrent } from "@/features/auth/api/use-current";
 import { useLogout } from "@/features/auth/api/use-logout";
 import { Icons } from "@/components/icons";
 import { Projects } from "@/components/projects";
-import { PageLoader } from "@/components/page-loader";
 
 const data = [
   {
@@ -114,133 +113,154 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <SidebarProvider>
-      <Suspense fallback={<PageLoader />}>
-        <CreateWorkspaceModal />
-        <CreateProjectModal />
-        <CreateTaskModal />
-        <EditTaskModal />
+      <CreateWorkspaceModal />
+      <CreateProjectModal />
+      <CreateTaskModal />
+      <EditTaskModal />
 
-        <Sidebar collapsible="icon">
-          <SidebarHeader>
-            <Link
-              href="/"
-              className="flex items-center gap-1 py-2 group-data-[collapsible=icon]:p-0"
-            >
-              <Icons.logo />
-              <span className="text-2xl font-semibold leading-none group-data-[collapsible=icon]:hidden">
-                TaskFlow
-              </span>
-            </Link>
+      <Sidebar collapsible="icon">
+        <SidebarHeader>
+          <Link
+            href="/"
+            className="flex items-center gap-1 py-2 group-data-[collapsible=icon]:p-0"
+          >
+            <Icons.logo />
+            <span className="text-2xl font-semibold leading-none group-data-[collapsible=icon]:hidden">
+              TaskFlow
+            </span>
+          </Link>
 
-            <Separator />
-          </SidebarHeader>
-          {workspaceId ? (
-            <SidebarContent>
-              <SidebarGroup>
-                <SidebarGroupLabel className="justify-between [&>svg]:size-5">
-                  <span className="text-sm">Workspaces</span>
-                  <RiAddCircleFill
-                    onClick={openWorkspaceModal}
-                    className="cursor-pointer hover:opacity-75 transition fill-foreground"
-                  />
-                </SidebarGroupLabel>
-                <SidebarMenu>
-                  <SidebarMenuItem>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <SidebarMenuButton
-                          size="lg"
-                          className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground gap-3"
+          <Separator />
+        </SidebarHeader>
+        {workspaceId ? (
+          <SidebarContent>
+            <SidebarGroup>
+              <SidebarGroupLabel className="justify-between [&>svg]:size-5">
+                <span className="text-sm">Workspaces</span>
+                <RiAddCircleFill
+                  onClick={openWorkspaceModal}
+                  className="cursor-pointer hover:opacity-75 transition fill-foreground"
+                />
+              </SidebarGroupLabel>
+              <SidebarMenu>
+                <SidebarMenuItem>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <SidebarMenuButton
+                        size="lg"
+                        className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground gap-3"
+                      >
+                        <WorkspaceAvatar
+                          name={activeWorkspace?.name ?? ""}
+                          image={activeWorkspace?.imageUrl}
+                        />
+                        <div className="truncate text-base font-semibold">
+                          {activeWorkspace?.name}
+                        </div>
+                        <ChevronsUpDown className="ml-auto" />
+                      </SidebarMenuButton>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent
+                      className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
+                      align="start"
+                      side="bottom"
+                      sideOffset={4}
+                    >
+                      <DropdownMenuLabel className="text-xs text-muted-foreground">
+                        Workspaces
+                      </DropdownMenuLabel>
+                      {workspaces?.documents.map((workspace, index) => (
+                        <DropdownMenuItem
+                          key={workspace.$id}
+                          onClick={() => {
+                            setActiveWorkspaceId(workspace.$id);
+                            router.push(`/workspaces/${workspace.$id}`);
+                          }}
+                          className="gap-3 p-2"
                         >
                           <WorkspaceAvatar
-                            name={activeWorkspace?.name ?? ""}
-                            image={activeWorkspace?.imageUrl}
+                            name={workspace.name}
+                            image={workspace.imageUrl}
                           />
-                          <div className="truncate text-base font-semibold">
-                            {activeWorkspace?.name}
-                          </div>
-                          <ChevronsUpDown className="ml-auto" />
-                        </SidebarMenuButton>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent
-                        className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
-                        align="start"
-                        side="bottom"
-                        sideOffset={4}
-                      >
-                        <DropdownMenuLabel className="text-xs text-muted-foreground">
-                          Workspaces
-                        </DropdownMenuLabel>
-                        {workspaces?.documents.map((workspace, index) => (
-                          <DropdownMenuItem
-                            key={workspace.$id}
-                            onClick={() => {
-                              setActiveWorkspaceId(workspace.$id);
-                              router.push(`/workspaces/${workspace.$id}`);
-                            }}
-                            className="gap-3 p-2"
-                          >
-                            <WorkspaceAvatar
-                              name={workspace.name}
-                              image={workspace.imageUrl}
-                            />
-                            {workspace.name}
-                            <DropdownMenuShortcut>
-                              ⌘{index + 1}
-                            </DropdownMenuShortcut>
-                          </DropdownMenuItem>
-                        ))}
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </SidebarMenuItem>
-                </SidebarMenu>
-              </SidebarGroup>
-              <Separator />
+                          {workspace.name}
+                          <DropdownMenuShortcut>
+                            ⌘{index + 1}
+                          </DropdownMenuShortcut>
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarGroup>
+            <Separator />
 
-              <SidebarGroup>
-                <SidebarMenu>
-                  {data.map((item) => {
-                    const fullHref = `/workspaces/${workspaceId}${item.href}`;
-                    const isActive = pathname === fullHref;
-                    const Icon = isActive ? item.activeIcon : item.icon;
+            <SidebarGroup>
+              <SidebarMenu>
+                {data.map((item) => {
+                  const fullHref = `/workspaces/${workspaceId}${item.href}`;
+                  const isActive = pathname === fullHref;
+                  const Icon = isActive ? item.activeIcon : item.icon;
 
-                    return (
-                      <SidebarMenuItem key={item.label}>
-                        <SidebarMenuButton asChild isActive={isActive}>
-                          <Link href={fullHref}>
-                            <Icon className="size-8" />
-                            <span className="">{item.label}</span>
-                          </Link>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-                    );
-                  })}
-                </SidebarMenu>
-              </SidebarGroup>
-              <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-                <SidebarGroupLabel className="justify-between [&>svg]:size-5 items-center">
-                  <span className="text-sm">Projects</span>
-                  <RiAddCircleFill
-                    onClick={openProjectModal}
-                    className="cursor-pointer hover:opacity-75 transition w-full fill-foreground"
-                  />
-                </SidebarGroupLabel>
-                <Projects />
-              </SidebarGroup>
-            </SidebarContent>
-          ) : (
-            <SidebarContent />
-          )}
-          <SidebarFooter>
-            <SidebarMenu>
-              <SidebarMenuItem>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <SidebarMenuButton
-                      size="lg"
-                      className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-                    >
-                      <Avatar className="h-8 w-8 rounded-lg ">
+                  return (
+                    <SidebarMenuItem key={item.label}>
+                      <SidebarMenuButton asChild isActive={isActive}>
+                        <Link href={fullHref}>
+                          <Icon className="size-8" />
+                          <span className="">{item.label}</span>
+                        </Link>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  );
+                })}
+              </SidebarMenu>
+            </SidebarGroup>
+            <SidebarGroup className="group-data-[collapsible=icon]:hidden">
+              <SidebarGroupLabel className="justify-between [&>svg]:size-5 items-center">
+                <span className="text-sm">Projects</span>
+                <RiAddCircleFill
+                  onClick={openProjectModal}
+                  className="cursor-pointer hover:opacity-75 transition w-full fill-foreground"
+                />
+              </SidebarGroupLabel>
+              <Projects />
+            </SidebarGroup>
+          </SidebarContent>
+        ) : (
+          <SidebarContent />
+        )}
+        <SidebarFooter>
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <SidebarMenuButton
+                    size="lg"
+                    className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+                  >
+                    <Avatar className="h-8 w-8 rounded-lg ">
+                      <AvatarFallback className="rounded-lg">
+                        {avatarFallback}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="grid flex-1 text-left text-sm leading-tight">
+                      <span className="truncate font-semibold">
+                        {user?.name}
+                      </span>
+                      <span className="truncate text-xs">{user?.email}</span>
+                    </div>
+                    <ChevronsUpDown className="ml-auto size-4" />
+                  </SidebarMenuButton>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
+                  side="bottom"
+                  align="end"
+                  sideOffset={4}
+                >
+                  <DropdownMenuLabel className="p-0 font-normal">
+                    <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+                      <Avatar className="h-8 w-8 rounded-lg">
                         <AvatarFallback className="rounded-lg">
                           {avatarFallback}
                         </AvatarFallback>
@@ -251,65 +271,40 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                         </span>
                         <span className="truncate text-xs">{user?.email}</span>
                       </div>
-                      <ChevronsUpDown className="ml-auto size-4" />
-                    </SidebarMenuButton>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent
-                    className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
-                    side="bottom"
-                    align="end"
-                    sideOffset={4}
+                    </div>
+                  </DropdownMenuLabel>
+                  <Separator className="my-2" />
+                  <DropdownMenuItem
+                    onClick={() => logout()}
+                    className="font-medium cursor-pointer"
                   >
-                    <DropdownMenuLabel className="p-0 font-normal">
-                      <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-                        <Avatar className="h-8 w-8 rounded-lg">
-                          <AvatarFallback className="rounded-lg">
-                            {avatarFallback}
-                          </AvatarFallback>
-                        </Avatar>
-                        <div className="grid flex-1 text-left text-sm leading-tight">
-                          <span className="truncate font-semibold">
-                            {user?.name}
-                          </span>
-                          <span className="truncate text-xs">
-                            {user?.email}
-                          </span>
-                        </div>
-                      </div>
-                    </DropdownMenuLabel>
-                    <Separator className="my-2" />
-                    <DropdownMenuItem
-                      onClick={() => logout()}
-                      className="font-medium cursor-pointer"
-                    >
-                      <LogOut />
-                      Log out
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarFooter>
-        </Sidebar>
-        <SidebarInset>
-          {workspaceId ? (
-            <>
-              <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
-                <div className="flex items-center gap-2 px-4">
-                  <SidebarTrigger className="-ml-1" />
-                  <Separator orientation="vertical" className="mr-2 h-4" />
-                  <BreadCrumbView />
-                </div>
-              </header>
-              <div className="flex flex-col px-4">{children}</div>
-            </>
-          ) : (
-            <div className="flex min-h-screen flex-col items-center justify-center py-4 bg-background">
-              {children}
-            </div>
-          )}
-        </SidebarInset>
-      </Suspense>
+                    <LogOut />
+                    Log out
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarFooter>
+      </Sidebar>
+      <SidebarInset>
+        {workspaceId ? (
+          <>
+            <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+              <div className="flex items-center gap-2 px-4">
+                <SidebarTrigger className="-ml-1" />
+                <Separator orientation="vertical" className="mr-2 h-4" />
+                <BreadCrumbView />
+              </div>
+            </header>
+            <div className="flex flex-col px-4">{children}</div>
+          </>
+        ) : (
+          <div className="flex min-h-screen flex-col items-center justify-center py-4 bg-background">
+            {children}
+          </div>
+        )}
+      </SidebarInset>
     </SidebarProvider>
   );
 };
