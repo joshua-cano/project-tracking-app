@@ -8,7 +8,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { signUpWithGithub, signUpWithGoogle } from "@/lib/oauth";
-import { DottedSeparator } from "@/components/dotted-separator";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -28,6 +27,7 @@ import {
 
 import { registerSchema } from "../schemas";
 import { useRegister } from "../api/use-register";
+import { Separator } from "@/components/ui/separator";
 
 export const SignUpCard = () => {
   const { mutate, isPending } = useRegister();
@@ -60,9 +60,7 @@ export const SignUpCard = () => {
           </Link>
         </CardDescription>
       </CardHeader>
-      <div className="px-7">
-        <DottedSeparator />
-      </div>
+      <Separator />
       <CardContent className="p-7">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -121,9 +119,7 @@ export const SignUpCard = () => {
           </form>
         </Form>
       </CardContent>
-      <div className="px-7">
-        <DottedSeparator />
-      </div>
+      <Separator />
       <CardContent className="p-7 flex flex-col gap-y-4">
         <Button
           variant="secondary"
@@ -146,9 +142,7 @@ export const SignUpCard = () => {
           Login with Github
         </Button>
       </CardContent>
-      <div className="px-7">
-        <DottedSeparator />
-      </div>
+      <Separator />
       <CardContent className="p-7 flex items-center justify-center">
         <p>Already have an account?</p>
         <Link href="/sign-in">

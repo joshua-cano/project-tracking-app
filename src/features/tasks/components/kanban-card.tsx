@@ -1,12 +1,12 @@
 import { MoreHorizontalIcon } from "lucide-react";
 
-import { DottedSeparator } from "@/components/dotted-separator";
 import { MemberAvatar } from "@/features/members/components/member-avatar";
 import { ProjectAvatar } from "@/features/projects/components/project-avatar";
 
 import { Task } from "../types";
 import { TaskDate } from "./task-date";
 import { TaskActions } from "./task-actions";
+import { Separator } from "@/components/ui/separator";
 
 interface KanbanCardProps {
   task: Task;
@@ -21,7 +21,7 @@ export const KanbanCard = ({ task }: KanbanCardProps) => {
           <MoreHorizontalIcon className="size-[18px] stroke-1 shrink-0 text-secondary hover:opacity-75 transition" />
         </TaskActions>
       </div>
-      <DottedSeparator />
+      <Separator />
       <div className="flex items-center gap-x-1.5">
         <MemberAvatar
           name={task.assignee.name}

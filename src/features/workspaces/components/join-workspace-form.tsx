@@ -1,6 +1,5 @@
 "use client";
 
-import { DottedSeparator } from "@/components/dotted-separator";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -14,6 +13,7 @@ import { useJoinWorkspace } from "../api/use-join-workspace";
 import { useInviteCode } from "../hooks/use-invite-code";
 import { useWorkspaceId } from "../hooks/use-workspace-id";
 import { useRouter } from "next/navigation";
+import { Separator } from "@/components/ui/separator";
 
 interface JoinWorkspaceFormProps {
   initialValues: {
@@ -52,9 +52,7 @@ export const JoinWorkspaceForm = ({
           <strong>{initialValues.name} workspace</strong>
         </CardDescription>
       </CardHeader>
-      <div className="px-7">
-        <DottedSeparator />
-      </div>
+      <Separator />
       <CardContent className="p-7">
         <div className="flex flex-col lg:flex-row gap-2 items-center justify-between">
           <Button

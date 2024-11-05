@@ -8,7 +8,6 @@ import { FaGithub } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { DottedSeparator } from "@/components/dotted-separator";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -22,6 +21,7 @@ import {
 import { loginSchema } from "../schemas";
 import { useLogin } from "../api/use-login";
 import { signUpWithGithub, signUpWithGoogle } from "@/lib/oauth";
+import { Separator } from "@/components/ui/separator";
 
 export const SignInCard = () => {
   const { mutate, isPending } = useLogin();
@@ -43,9 +43,7 @@ export const SignInCard = () => {
       <CardHeader className="flex items-center justify-center text-center p-7">
         <CardTitle className="text-2xl">Welcome back!</CardTitle>
       </CardHeader>
-      <div className="px-7">
-        <DottedSeparator />
-      </div>
+      <Separator />
       <CardContent className="p-7">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -89,9 +87,7 @@ export const SignInCard = () => {
           </form>
         </Form>
       </CardContent>
-      <div className="px-7">
-        <DottedSeparator />
-      </div>
+      <Separator />
       <CardContent className="p-7 flex flex-col gap-y-4">
         <Button
           variant="secondary"
@@ -114,9 +110,7 @@ export const SignInCard = () => {
           Login with Github
         </Button>
       </CardContent>
-      <div className="px-7">
-        <DottedSeparator />
-      </div>
+      <Separator />
       <CardContent className="p-7 flex items-center justify-center">
         <p>Don&apos;t have an account?</p>
         <Link href="/sign-up">

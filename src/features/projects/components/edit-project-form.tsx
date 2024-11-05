@@ -10,7 +10,6 @@ import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { DottedSeparator } from "@/components/dotted-separator";
 
 import {
   Form,
@@ -29,6 +28,7 @@ import { updateProjectSchema } from "../schemas";
 import { useUpdateProject } from "../api/use-update-project";
 import { Project } from "../types";
 import { useDeleteProject } from "../api/use-delete-project";
+import { Separator } from "@/components/ui/separator";
 
 interface EditProjectFormProps {
   onCancel?: () => void;
@@ -124,9 +124,7 @@ export const EditProjectForm = ({
             {initialValues.name}
           </CardTitle>
         </CardHeader>
-        <div className="px-7">
-          <DottedSeparator />
-        </div>
+        <Separator />
         <CardContent className="p-7">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -166,7 +164,7 @@ export const EditProjectForm = ({
                         ) : (
                           <Avatar className="size-[72px]">
                             <AvatarFallback>
-                              <ImageIcon className="size-[36px] text-secondary" />
+                              <ImageIcon className="size-[36px]" />
                             </AvatarFallback>
                           </Avatar>
                         )}
@@ -211,7 +209,7 @@ export const EditProjectForm = ({
                   )}
                 />
               </div>
-              <DottedSeparator className="py-7" />
+              <Separator className="my-7" />
               <div className="flex items-center justify-between">
                 <Button
                   type="button"
@@ -245,7 +243,7 @@ export const EditProjectForm = ({
               Deleting a project is irreversible and will remove all associated
               data.
             </p>
-            <DottedSeparator className="py-7" />
+            <Separator className="my-7" />
             <Button
               className="mt-6 w-fit ml-auto"
               size="sm"

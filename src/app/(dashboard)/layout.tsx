@@ -47,7 +47,6 @@ import { BreadCrumbView } from "@/components/breadcrumb-view";
 import { Separator } from "@/components/ui/separator";
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { DottedSeparator } from "@/components/dotted-separator";
 
 import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
 import { useGetWorkspaces } from "@/features/workspaces/api/use-get-workspaces";
@@ -133,7 +132,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
               </span>
             </Link>
 
-            <DottedSeparator />
+            <Separator />
           </SidebarHeader>
           {workspaceId ? (
             <SidebarContent>
@@ -196,7 +195,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                   </SidebarMenuItem>
                 </SidebarMenu>
               </SidebarGroup>
-              <DottedSeparator />
+              <Separator />
 
               <SidebarGroup>
                 <SidebarMenu>
@@ -278,7 +277,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                         </div>
                       </div>
                     </DropdownMenuLabel>
-                    <DottedSeparator className="my-2" />
+                    <Separator className="my-2" />
                     <DropdownMenuItem
                       onClick={() => logout()}
                       className="font-medium cursor-pointer"

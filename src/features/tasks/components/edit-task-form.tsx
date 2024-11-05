@@ -6,7 +6,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { cn } from "@/lib/utils";
 import { DatePicker } from "@/components/date-picker";
-import { DottedSeparator } from "@/components/dotted-separator";
 import { MemberAvatar } from "@/features/members/components/member-avatar";
 import { ProjectAvatar } from "@/features/projects/components/project-avatar";
 
@@ -32,6 +31,7 @@ import {
 import { Task, TaskStatus } from "../types";
 import { createTaskSchema } from "../schemas";
 import { useUpdateTask } from "../api/use-update-task";
+import { Separator } from "@/components/ui/separator";
 
 interface EditTaskFormProps {
   onCancel?: () => void;
@@ -84,9 +84,7 @@ export const EditTaskForm = ({
       <CardHeader className="flex p-7">
         <CardTitle className="text-xl font-bold">Edit a task</CardTitle>
       </CardHeader>
-      <div className="px-7">
-        <DottedSeparator />
-      </div>
+      <Separator />
       <CardContent className="p-7">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -222,7 +220,7 @@ export const EditTaskForm = ({
                 )}
               />
             </div>
-            <DottedSeparator className="py-2" />
+            <Separator className="py-2" />
             <div className="flex items-center justify-between">
               <Button
                 type="button"

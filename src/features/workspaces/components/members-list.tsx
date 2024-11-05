@@ -14,7 +14,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ArrowLeftIcon, MoreVerticalIcon } from "lucide-react";
 import Link from "next/link";
-import { DottedSeparator } from "@/components/dotted-separator";
 import { useGetMembers } from "@/features/members/api/use-get-members";
 import { Separator } from "@/components/ui/separator";
 import { useDeleteMember } from "@/features/members/api/use-delete-member";
@@ -69,9 +68,7 @@ export const MembersList = () => {
         </Button>
         <CardTitle className="text-xl font-bold">Members List</CardTitle>
       </CardHeader>
-      <div className="px-7">
-        <DottedSeparator />
-      </div>
+      <Separator />
       <CardContent className="p-7">
         {data?.documents.map((member, index) => (
           <Fragment key={member.$id}>

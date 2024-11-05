@@ -4,7 +4,6 @@ import { useCallback } from "react";
 import { useQueryState } from "nuqs";
 import { Loader, PlusIcon } from "lucide-react";
 
-import { DottedSeparator } from "@/components/dotted-separator";
 import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
 import { useProjectId } from "@/features/projects/hooks/use-project-id";
 
@@ -22,6 +21,7 @@ import { useGetTasks } from "../api/use-get-tasks";
 import { useTaskFilters } from "../hooks/use-task-filters";
 import { useCreateTaskModal } from "../hooks/use-create-task-modal";
 import { useBulkUpdateTasks } from "../api/use-bulk-update-tasks";
+import { Separator } from "@/components/ui/separator";
 
 interface TaskViewSwitcherProps {
   hideProjectFilter?: boolean;
@@ -83,14 +83,19 @@ export const TaskViewSwitcher = ({
               Calendar
             </TabsTrigger>
           </TabsList>
-          <Button onClick={open} size="sm" className="w-full lg:w-auto">
+          <Button
+            onClick={open}
+            size="sm"
+            className="w-full lg:w-auto"
+            variant="secondary"
+          >
             <PlusIcon className="size-4 mr-2" />
             New
           </Button>
         </div>
-        <DottedSeparator className="my-4" />
+        <Separator className="my-4" />
         <DataFilters hideProjectFilter={hideProjectFilter} />
-        <DottedSeparator className="my-4" />
+        <Separator className="my-4" />
         {isLoadingTasks ? (
           <div className="w-full border rounded-lg h-[200px] flex flex-col items-center justify-center">
             <Loader className="size-5 animate-spin text-muted-foreground" />

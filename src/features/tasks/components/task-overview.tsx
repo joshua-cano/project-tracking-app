@@ -4,13 +4,13 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 import { snakeCaseToTitleCase } from "@/lib/utils";
-import { DottedSeparator } from "@/components/dotted-separator";
 import { MemberAvatar } from "@/features/members/components/member-avatar";
 
 import { Task } from "../types";
 import { TaskDate } from "./task-date";
 import { OverviewProperty } from "./overview-property";
 import { useEditTaskModal } from "../hooks/use-edit-task-modal";
+import { Separator } from "@/components/ui/separator";
 
 interface TaskOverviewProps {
   task: Task;
@@ -29,7 +29,7 @@ export const TaskOverview = ({ task }: TaskOverviewProps) => {
             Edit
           </Button>
         </div>
-        <DottedSeparator className="my-4" />
+        <Separator className="my-4" />
         <div className="flex flex-col gap-y-4">
           <OverviewProperty label="Assignee">
             <MemberAvatar name={task.assignee.name} className="size-6" />

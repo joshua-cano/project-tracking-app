@@ -22,7 +22,7 @@ import { Analytics } from "@/components/analytics";
 import { PageError } from "@/components/page-error";
 import { Card, CardContent } from "@/components/ui/card";
 import { PageLoader } from "@/components/page-loader";
-import { DottedSeparator } from "@/components/dotted-separator";
+import { Separator } from "@/components/ui/separator";
 
 export const WorkspaceIdClient = () => {
   const workspaceId = useWorkspaceId();
@@ -87,7 +87,7 @@ export const TaskList = ({ data, total }: TaskListProps) => {
             <PlusIcon className="size-4" />
           </Button>
         </div>
-        <DottedSeparator className="my-4" />
+        <Separator className="my-4" />
         <ul className="flex flex-col gap-y-4">
           {data.map((task) => (
             <li key={task.$id}>
@@ -131,7 +131,7 @@ export const ProjectList = ({ data, total }: ProjectListProps) => {
   const { open: createProject } = useCreateProjectModal();
 
   return (
-    <div className="flex flex-col gap-y-4 col-span-1">
+    <div className="flex flex-col gap-y-4 col-span-1 ">
       <div className="border rounded-lg p-4">
         <div className="flex items-center justify-between">
           <p className="text-lg font-semibold">Projects ({total})</p>
@@ -139,7 +139,7 @@ export const ProjectList = ({ data, total }: ProjectListProps) => {
             <PlusIcon className="size-4" />
           </Button>
         </div>
-        <DottedSeparator className="my-4" />
+        <Separator className="my-4" />
         <ul className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {data.map((project) => (
             <li key={project.$id}>
@@ -187,7 +187,7 @@ export const MembersList = ({ data, total }: MembersListProps) => {
             </Link>
           </Button>
         </div>
-        <DottedSeparator className="my-4" />
+        <Separator className="my-4" />
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {data.map((member) => (
             <li key={member.$id}>

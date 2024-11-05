@@ -12,7 +12,6 @@ import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { DottedSeparator } from "@/components/dotted-separator";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Form,
@@ -30,6 +29,7 @@ import { useConfirm } from "@/hooks/use-confirm";
 import { useDeleteWorkspace } from "../api/use-delete-workspace";
 import { toast } from "sonner";
 import { useResetInviteCode } from "../api/use-reset-invite-code";
+import { Separator } from "@/components/ui/separator";
 
 type EditWorkspaceFormProps = {
   onCancel?: () => void;
@@ -147,9 +147,7 @@ export const EditWorkspaceForm = ({
             {initialValues.name}
           </CardTitle>
         </CardHeader>
-        <div className="px-7">
-          <DottedSeparator />
-        </div>
+        <Separator />
         <CardContent className="p-7">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -189,7 +187,7 @@ export const EditWorkspaceForm = ({
                         ) : (
                           <Avatar className="size-[72px]">
                             <AvatarFallback>
-                              <ImageIcon className="size-[36px] text-neutral-400" />
+                              <ImageIcon className="size-[36px]" />
                             </AvatarFallback>
                           </Avatar>
                         )}
@@ -232,7 +230,7 @@ export const EditWorkspaceForm = ({
                   )}
                 />
               </div>
-              <DottedSeparator className="py-7" />
+              <Separator className="my-7" />
               <div className="flex items-center justify-between">
                 <Button
                   type="button"
@@ -271,7 +269,7 @@ export const EditWorkspaceForm = ({
                 </Button>
               </div>
             </div>
-            <DottedSeparator className="py-7" />
+            <Separator className="my-7" />
             <Button
               className="w-fit ml-auto"
               size="sm"
@@ -293,7 +291,7 @@ export const EditWorkspaceForm = ({
               Deleting a workspace is irreversible and will remove all
               associated data.
             </p>
-            <DottedSeparator className="py-7" />
+            <Separator className="my-7" />
             <Button
               className="w-fit ml-auto"
               size="sm"

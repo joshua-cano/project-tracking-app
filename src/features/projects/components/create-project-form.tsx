@@ -10,7 +10,6 @@ import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { DottedSeparator } from "@/components/dotted-separator";
 
 import {
   Form,
@@ -27,6 +26,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { createProjectSchema } from "../schemas";
 import { useCreateProject } from "../api/use-create-project";
 import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
+import { Separator } from "@/components/ui/separator";
 
 interface CreateProjectFormProps {
   onCancel?: () => void;
@@ -84,9 +84,7 @@ export const CreateProjectForm = ({ onCancel }: CreateProjectFormProps) => {
           Create a new project
         </CardTitle>
       </CardHeader>
-      <div className="px-7">
-        <DottedSeparator />
-      </div>
+      <Separator />
       <CardContent className="p-7">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -171,7 +169,7 @@ export const CreateProjectForm = ({ onCancel }: CreateProjectFormProps) => {
                 )}
               />
             </div>
-            <DottedSeparator className="py-7" />
+            <Separator className="my-7" />
             <div className="flex items-center justify-between">
               <Button
                 type="button"

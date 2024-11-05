@@ -2,7 +2,7 @@ import { ProjectAnalyticsResponseType } from "@/features/projects/api/use-get-pr
 
 import { AnalyticsCard } from "./analytics-card";
 import { ScrollArea, ScrollBar } from "./ui/scroll-area";
-import { DottedSeparator } from "./dotted-separator";
+import { Separator } from "@/components/ui/separator";
 
 export const Analytics = ({ data }: ProjectAnalyticsResponseType) => {
   return (
@@ -15,7 +15,7 @@ export const Analytics = ({ data }: ProjectAnalyticsResponseType) => {
             variant={data.taskDifference > 0 ? "up" : "down"}
             increaseValue={data.taskDifference}
           />
-          <DottedSeparator direction="vertical" />
+          <Separator orientation="vertical" />
         </div>
         <div className="flex items-center flex-1">
           <AnalyticsCard
@@ -24,7 +24,7 @@ export const Analytics = ({ data }: ProjectAnalyticsResponseType) => {
             variant={data.assignedTaskDifference > 0 ? "up" : "down"}
             increaseValue={data.assignedTaskDifference}
           />
-          <DottedSeparator direction="vertical" />
+          <Separator orientation="vertical" />
         </div>
         <div className="flex items-center flex-1">
           <AnalyticsCard
@@ -33,7 +33,7 @@ export const Analytics = ({ data }: ProjectAnalyticsResponseType) => {
             variant={data.completedTaskDifference > 0 ? "up" : "down"}
             increaseValue={data.completedTaskDifference}
           />
-          <DottedSeparator direction="vertical" />
+          <Separator orientation="vertical" />
         </div>
         <div className="flex items-center flex-1">
           <AnalyticsCard
@@ -42,7 +42,7 @@ export const Analytics = ({ data }: ProjectAnalyticsResponseType) => {
             variant={data.overdueTaskDifference > 0 ? "up" : "down"}
             increaseValue={data.overdueTaskDifference}
           />
-          <DottedSeparator direction="vertical" />
+          <Separator orientation="vertical" />
         </div>
         <div className="flex items-center flex-1">
           <AnalyticsCard

@@ -12,7 +12,6 @@ import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { DottedSeparator } from "@/components/dotted-separator";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Form,
@@ -25,6 +24,7 @@ import {
 
 import { createWorkspaceSchema } from "../schemas";
 import { useCreateWorkspace } from "../api/use-create-workspace";
+import { Separator } from "@/components/ui/separator";
 
 type CreateWorkspaceFormProps = {
   onCancel?: () => void;
@@ -80,9 +80,7 @@ export const CreateWorkspaceForm = ({ onCancel }: CreateWorkspaceFormProps) => {
           Create a new workspace
         </CardTitle>
       </CardHeader>
-      <div className="px-7">
-        <DottedSeparator />
-      </div>
+      <Separator />
       <CardContent className="p-7">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -122,7 +120,7 @@ export const CreateWorkspaceForm = ({ onCancel }: CreateWorkspaceFormProps) => {
                       ) : (
                         <Avatar className="size-[72px]">
                           <AvatarFallback>
-                            <ImageIcon className="size-[36px] text-neutral-400" />
+                            <ImageIcon className="size-[36px]" />
                           </AvatarFallback>
                         </Avatar>
                       )}
@@ -165,7 +163,7 @@ export const CreateWorkspaceForm = ({ onCancel }: CreateWorkspaceFormProps) => {
                 )}
               />
             </div>
-            <DottedSeparator className="py-7" />
+            <Separator className="my-7" />
             <div className="flex items-center justify-between">
               <Button
                 type="button"
