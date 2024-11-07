@@ -23,7 +23,7 @@ export const Projects = () => {
         return (
           <SidebarMenuItem key={project.$id}>
             <SidebarMenuButton asChild isActive={isActive} size="lg">
-              <Link href={href}>
+              <Link href={href} prefetch={true}>
                 <ProjectAvatar image={project.imageUrl} name={project.name} />
                 <span className="text-base truncate">{project.name}</span>
               </Link>

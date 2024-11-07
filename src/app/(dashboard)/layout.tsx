@@ -205,7 +205,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                   return (
                     <SidebarMenuItem key={item.label}>
                       <SidebarMenuButton asChild isActive={isActive}>
-                        <Link href={fullHref}>
+                        <Link href={fullHref} prefetch={true}>
                           <Icon className="size-8" />
                           <span className="">{item.label}</span>
                         </Link>
