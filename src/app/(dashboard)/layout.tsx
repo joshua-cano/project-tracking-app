@@ -28,7 +28,6 @@ import {
   DropdownMenu,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuShortcut,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
@@ -169,7 +168,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                       <DropdownMenuLabel className="text-xs text-muted-foreground">
                         Workspaces
                       </DropdownMenuLabel>
-                      {workspaces?.documents.map((workspace, index) => (
+                      {workspaces?.documents.map((workspace) => (
                         <DropdownMenuItem
                           key={workspace.$id}
                           onClick={() => {
