@@ -141,7 +141,7 @@ export const DataKanban = ({ data, onChange }: DataKanbanProps) => {
           }
         });
 
-        // If  the task moved between columns, update position in the source column
+        // If the task moved between columns, update position in the source column
         if (sourceStatus !== destStatus) {
           newTasks[sourceStatus].forEach((task, index) => {
             if (task) {

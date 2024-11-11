@@ -46,7 +46,7 @@ export const ProjectIdClient = () => {
           <p className="text-lg font-semibold">{project.name}</p>
         </div>
         <div>
-          <Button variant="secondary" size="sm" asChild>
+          <Button variant="primary" size="sm" asChild>
             <Link href={href}>
               <PencilIcon className="size-4 mr-2" />
               Edit Project

@@ -220,7 +220,7 @@ export const EditTaskForm = ({
                 )}
               />
             </div>
-            <Separator className="py-2" />
+            <Separator className="my-7" />
             <div className="flex items-center justify-between">
               <Button
                 type="button"

@@ -124,7 +124,7 @@ export const CreateProjectForm = ({ onCancel }: CreateProjectFormProps) => {
                       ) : (
                         <Avatar className="size-[72px]">
                           <AvatarFallback>
-                            <ImageIcon className="size-[36px] text-secondary" />
+                            <ImageIcon className="size-[36px] text-secondary-foreground" />
                           </AvatarFallback>
                         </Avatar>
                       )}

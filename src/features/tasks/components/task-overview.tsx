@@ -24,7 +24,7 @@ export const TaskOverview = ({ task }: TaskOverviewProps) => {
       <div className="bg-muted rounded-lg p-4">
         <div className="flex items-center justify-between">
           <p className="text-lg font-semibold">Overview</p>
-          <Button onClick={() => open(task.$id)} size="sm" variant="secondary">
+          <Button onClick={() => open(task.$id)} size="sm" variant="primary">
             <PencilIcon className="size-4 mr-2" />
             Edit
           </Button>
@@ -32,7 +32,10 @@ export const TaskOverview = ({ task }: TaskOverviewProps) => {
         <Separator className="my-4" />
         <div className="flex flex-col gap-y-4">
           <OverviewProperty label="Assignee">
-            <MemberAvatar name={task.assignee.name} className="size-6" />
+            <MemberAvatar
+              name={task.assignee.name}
+              className="size-6 border-muted-foreground"
+            />
             <p className="text-sm font-medium">{task.assignee.name}</p>
           </OverviewProperty>
           <OverviewProperty label="Due Date">

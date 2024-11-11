@@ -183,9 +183,6 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                             image={workspace.imageUrl}
                           />
                           {workspace.name}
-                          <DropdownMenuShortcut>
-                            ⌘{index + 1}
-                          </DropdownMenuShortcut>
                         </DropdownMenuItem>
                       ))}
                     </DropdownMenuContent>
@@ -205,7 +202,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                   return (
                     <SidebarMenuItem key={item.label}>
                       <SidebarMenuButton asChild isActive={isActive}>
-                        <Link href={fullHref} prefetch={true}>
+                        <Link href={fullHref}>
                           <Icon className="size-8" />
                           <span className="">{item.label}</span>
                         </Link>
